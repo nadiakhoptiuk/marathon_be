@@ -1,10 +1,17 @@
 const { app } = require("./app.js");
-const { config } = require("dotenv");
+const { connectToDB } = require("./db/connection.js");
 
-config();
+require("dotenv").config();
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => {
-  console.log(`Start listening port ${PORT}...`);
-});
+connectToDB()
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`Server is running. Start listening port ${PORT}...`);
+    });
+  })
+  .catch((err) => {
+    console.log(`Server isn't running. Error message: ${err.message}`);
+    process.exit(1);
+  });
