@@ -1,0 +1,28 @@
+{
+  "slug": "start",
+
+  "title": {
+    "en": "Start",
+    "uk": "Старт",
+    "ru": "Старт"
+  },
+
+  "tags": [
+    {
+      "tag": "general",
+      "title": {
+        "en": "General questions",
+        "uk": "Загальні питання",
+        "ru": "Общие вопросы"
+      }
+    },
+    {
+      "tag": "vscode",
+      "title": {
+        "en": "VSCode",
+        "uk": "VSCode",
+        "ru": "VSCode"
+      }
+    }
+  ]
+}

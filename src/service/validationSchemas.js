@@ -33,64 +33,22 @@ const createDaySchema = Joi.object({
       .required(),
   }).required("Title is required"),
 
-  generalQuestions: Joi.object({
-    title: Joi.object({
-      en: Joi.string().trim().required(),
-      uk: Joi.string().trim().required(),
-      ru: Joi.string().trim().required(),
-    }).required(),
-    questions: Joi.array()
-      .optional()
-      .items(
-        Joi.object({
-          range: Joi.string().required(),
-          text: Joi.object({
-            en: Joi.object({
-              question: Joi.string(),
-              answer: Joi.string(),
-            }),
-            uk: Joi.object({
-              question: Joi.string(),
-              answer: Joi.string(),
-            }),
-            ru: Joi.object({
-              question: Joi.string(),
-              answer: Joi.string(),
-            }),
-          }),
-        })
-      ),
-  }),
-
-  vsCodeQuestions: Joi.object({
-    title: Joi.object({
-      en: Joi.string().trim().required(),
-      uk: Joi.string().trim().required(),
-      ru: Joi.string().trim().required(),
-    }).required(),
-    questions: Joi.array()
-      .optional()
-      .items(
-        Joi.object({
-          range: Joi.string().required(),
-          text: Joi.object({
-            en: Joi.object({
-              question: Joi.string(),
-              answer: Joi.string(),
-            }),
-            uk: Joi.object({
-              question: Joi.string(),
-              answer: Joi.string(),
-            }),
-            ru: Joi.object({
-              question: Joi.string(),
-              answer: Joi.string(),
-            }),
-          }),
-        })
-      ),
-  }),
+  // questions: Joi.array().optional().items(Joi.string()),
 });
+
+// tags: Joi.array()
+//     .items(
+//       Joi.object({
+//         tag: Joi.string().trim().valid("general", "vscode").required(),
+
+//         title: Joi.object({
+//           en: Joi.string().trim().required(),
+//           uk: Joi.string().trim().required(),
+//           ru: Joi.string().trim().required(),
+//         }).required(),
+//       })
+//     )
+//     .required("Tag is required"),
 
 const createQuestionSchema = Joi.object({
   range: Joi.string().required("Range is required"),
@@ -111,8 +69,6 @@ const createQuestionSchema = Joi.object({
       answer: Joi.string().required("Answer is required"),
     }).required(),
   }).required("Question is required"),
-
-  // daySlug: Joi.string().trim().required("Slug of the day is required"),
 
   tag: Joi.string()
     .trim()

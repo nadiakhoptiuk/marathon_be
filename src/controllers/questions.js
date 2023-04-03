@@ -1,9 +1,11 @@
 const { createQuestionData } = require("../service/questionsService");
 
-// creating new day
+// creating new question
 const createNewQuestion = async (req, res, next) => {
   const { day } = req.params;
-  await createQuestionData(day);
+  const newQuestion = req.body;
+
+  await createQuestionData(day, newQuestion);
 
   res
     .status(201)
