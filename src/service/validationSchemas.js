@@ -92,6 +92,35 @@ const createDaySchema = Joi.object({
   }),
 });
 
+const createQuestionSchema = Joi.object({
+  range: Joi.string().required("Range is required"),
+
+  text: Joi.object({
+    en: Joi.object({
+      question: Joi.string().required("Question is required"),
+      answer: Joi.string().required("Answer is required"),
+    }).required(),
+
+    uk: Joi.object({
+      question: Joi.string().required("Question is required"),
+      answer: Joi.string().required("Answer is required"),
+    }).required(),
+
+    ru: Joi.object({
+      question: Joi.string().required("Question is required"),
+      answer: Joi.string().required("Answer is required"),
+    }).required(),
+  }).required("Question is required"),
+
+  // daySlug: Joi.string().trim().required("Slug of the day is required"),
+
+  tag: Joi.string()
+    .trim()
+    .valid("general", "vscode")
+    .required("Id of the day is required"),
+});
+
 module.exports = {
   createDaySchema,
+  createQuestionSchema,
 };

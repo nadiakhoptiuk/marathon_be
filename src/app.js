@@ -2,6 +2,7 @@ const express = require("express");
 const logger = require("morgan");
 const cors = require("cors");
 const daysRouter = require("./routes/api/days");
+const questionsRouter = require("./routes/api/questions");
 const errorHandler = require("./middlewares/errorsHandler");
 
 const app = express();
@@ -11,6 +12,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use("/days", daysRouter);
+app.use("/questions", questionsRouter);
 
 app.use((req, res, next) => {
   const error = new Error("Not found");
