@@ -1,11 +1,14 @@
 const { Day } = require("../db/schemas/daySchema");
-const { createDayData } = require("../service/daysServices");
+const {
+  createDayData,
+  getDataForDayBySlug,
+} = require("../service/daysServices");
 
 // getting all day data
 const getAllDataForDay = async (req, res, next) => {
   const { day } = req.params;
 
-  const dayInfo = await Day.findOne({ slug: day });
+  const dayInfo = await getDataForDayBySlug(day);
 
   res.status(200).send({ data: dayInfo });
 };
