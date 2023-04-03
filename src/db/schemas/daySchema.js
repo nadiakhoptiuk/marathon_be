@@ -1,18 +1,16 @@
 const mongoose = require("mongoose");
-const { Schema, model } = mongoose.Schema;
+const { Schema, model } = mongoose;
 
-const days = new Schema({
-  id: {
+const daysSchema = new Schema({
+  slug: {
     type: String,
     minlength: 1,
     maxlength: 5,
-    required: [true, "Id of the day is required"],
-    unique: [true, "Day with this id already exists in the database"],
+    required: [true, "Slug of the day is required"],
+    unique: [true, "Day with this slug already exists in the database"],
   },
   title: {
-    type: String,
-    minlength: 5,
-    maxlength: 15,
+    type: Object,
     required: [true, "Title of the day is required"],
     unique: [true, "Day with this title already exists in the database"],
   },
@@ -24,7 +22,7 @@ const days = new Schema({
   },
 });
 
-const Day = model("day", days);
+const Day = model("day", daysSchema);
 
 module.exports = {
   Day,
