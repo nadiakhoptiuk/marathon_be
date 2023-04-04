@@ -22,11 +22,6 @@ const questionsSchema = new Schema({
     enum: ["general", "vscode"],
     required: [true, "Id of the day is required"],
   },
-
-  id: {
-    type: String,
-    required: [true, "Id of the question is required"],
-  },
 });
 
 const Question = model("question", questionsSchema);

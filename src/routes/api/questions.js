@@ -1,14 +1,26 @@
 const express = require("express");
-const { createNewQuestion } = require("../../controllers/questions");
+const {
+  createNewQuestion,
+  updateQuestion,
+} = require("../../controllers/questions");
 const { asyncErrorsHandler } = require("../../middlewares/asyncErrorsHandler");
 const { validation } = require("../../middlewares/validation");
-const { createQuestionSchema } = require("../../service/validationSchemas");
+const {
+  createQuestionSchema,
+  updateQuestionSchema,
+} = require("../../service/validationSchemas");
 const router = express.Router();
 
 router.post(
   "/:day",
   validation(createQuestionSchema),
   asyncErrorsHandler(createNewQuestion)
+);
+
+router.patch(
+  "/:questionId",
+  validation(updateQuestionSchema),
+  asyncErrorsHandler(updateQuestion)
 );
 
 module.exports = router;
