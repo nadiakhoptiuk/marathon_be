@@ -1,9 +1,17 @@
 const {
   createDayData,
   getDataForDayBySlug,
+  getAllDaysData,
 } = require("../service/daysServices");
 
-// getting all day data
+// getting all days titles
+const getAllDaysTitles = async (req, res, next) => {
+  const dataArray = await getAllDaysData();
+
+  res.status(200).send({ data: dataArray });
+};
+
+// getting all data for day by slug
 const getAllDataForDay = async (req, res, next) => {
   const { day } = req.params;
 
@@ -20,6 +28,7 @@ const createDay = async (req, res, next) => {
 };
 
 module.exports = {
+  getAllDaysTitles,
   getAllDataForDay,
   createDay,
 };
