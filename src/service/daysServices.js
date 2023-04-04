@@ -11,6 +11,18 @@ const createDayData = async (dayInfo) => {
   return await Day.create(dayInfo);
 };
 
+const getAllDaysData = async () => {
+  const allDays = await Day.find();
+
+  if (!allDays) {
+    throw new NotFound("There are no one day in the database");
+  }
+
+  const titles = allDays.map((day) => day.title);
+
+  return titles;
+};
+
 const getDataForDayBySlug = async (day) => {
   const isExistedDay = await Day.findOne({ slug: day });
 
@@ -23,5 +35,6 @@ const getDataForDayBySlug = async (day) => {
 
 module.exports = {
   createDayData,
+  getAllDaysData,
   getDataForDayBySlug,
 };
