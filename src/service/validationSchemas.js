@@ -76,7 +76,31 @@ const createQuestionSchema = Joi.object({
     .required("Id of the day is required"),
 });
 
+const updateQuestionSchema = Joi.object({
+  range: Joi.string(),
+
+  text: Joi.object({
+    en: Joi.object({
+      question: Joi.string(),
+      answer: Joi.string(),
+    }),
+
+    uk: Joi.object({
+      question: Joi.string(),
+      answer: Joi.string(),
+    }),
+
+    ru: Joi.object({
+      question: Joi.string(),
+      answer: Joi.string(),
+    }),
+  }),
+
+  tag: Joi.string().trim().valid("general", "vscode"),
+}).min(1);
+
 module.exports = {
   createDaySchema,
   createQuestionSchema,
+  updateQuestionSchema,
 };

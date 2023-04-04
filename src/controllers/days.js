@@ -1,4 +1,3 @@
-const { Day } = require("../db/schemas/daySchema");
 const {
   createDayData,
   getDataForDayBySlug,
